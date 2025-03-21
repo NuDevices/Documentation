@@ -2,6 +2,10 @@
 
 This documentation guides you through the process of setting up a Python virtual environment, installing ONNX Runtime, and running inference with YOLO ONNX models, with clearly separated components.
 
+> **Additional Resources:**
+> - Official ONNX Runtime Documentation: [https://onnxruntime.ai/docs/](https://onnxruntime.ai/docs/)
+> - Microsoft Olive for Model Fine-tuning and Optimization: [https://github.com/microsoft/Olive](https://github.com/microsoft/Olive)
+
 ## 1. Setting Up the Virtual Environment
 
 Creating a virtual environment helps isolate dependencies for your project:
@@ -23,6 +27,7 @@ source venv/bin/activate
 ## 2. Installing ONNX Runtime and Dependencies
 
 Once your virtual environment is activated, install the ONNX Runtime wheel file and Pillow-SIMD for faster image processing:
+
 
 ```bash
 # Navigate to the directory containing the .whl file
@@ -301,3 +306,29 @@ This implementation uses exclusively the BarqExecutionProvider*. Ensure that it'
 3. **Low performance**:
    - Try different execution providers
    - Optimize with quantized models
+
+## 7. Model Optimization with Microsoft Olive
+
+For model fine-tuning and optimization, you can use Microsoft's Olive tool:
+
+```bash
+# Install Olive
+pip install olive-ai
+
+# Basic usage example
+olive optimize --model model.onnx --config olive_config.json --output optimized_model
+```
+
+Olive provides several optimization techniques, including:
+- Quantization (INT8, FP16)
+- Pruning
+- Knowledge distillation
+- Graph optimizations
+
+Refer to the [Olive GitHub repository](https://github.com/microsoft/Olive) for detailed documentation and examples.
+
+## 8. Additional ONNX Runtime Resources
+
+- [Performance Tuning Guide](https://onnxruntime.ai/docs/performance/tune-performance.html)
+- [Execution Providers](https://onnxruntime.ai/docs/execution-providers/)
+- [API Reference](https://onnxruntime.ai/docs/api/)
