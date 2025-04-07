@@ -1,0 +1,11 @@
+[Unit]
+Description=Configure PCIe settings at startup
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/setpci -s 00:00.0 4.w=0x0006
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
